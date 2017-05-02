@@ -1,0 +1,28 @@
+{
+  "name": "socket.io-chatbot",
+  "version": "1.0.0",
+  "description": "A school assignment where I'll be building a simple chatbot.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oskareriksson/socket.io-chatbot.git"
+  },
+  "author": "Oskar Eriksson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oskareriksson/socket.io-chatbot/issues"
+  },
+  "homepage": "https://github.com/oskareriksson/socket.io-chatbot#readme",
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "pug": "^2.0.0-rc.1"
+  }
+}
