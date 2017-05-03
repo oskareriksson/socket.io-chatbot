@@ -1,3 +1,14 @@
 body {
   background-color: #91e27f;
 }
+
+#chatbox {
+  height: 200px;
+  background-color: orange;
+  margin-bottom: 20px;
+}
+
+#name, #input {
+  margin: 0 auto;
+  width: 80%;
+}
