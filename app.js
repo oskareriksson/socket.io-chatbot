@@ -22,6 +22,15 @@ app.set("view engine", "pug");
 app.use("/public", express.static("public"));
 app.use("/", routes);
 
+//When user connects
+io.on("connection", (socket) => {
+  //User socket
+  socket.on("chat", (data) => {
+    io.emit("message", data);
+  });
+
+});
+
 server.listen(config.port, () => {
   console.log(`Server up and running at port ${config.port}`.blue);
 });
