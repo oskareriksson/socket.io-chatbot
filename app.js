@@ -29,7 +29,9 @@ io.on("connection", (socket) => {
   /*socket.on("chat", (data) => {
     io.emit("message", data);
   });*/
-
+  socket.on("clientmessage", (message) => {
+    console.log(message);
+  });
 });
 
 server.listen(config.port, () => {
