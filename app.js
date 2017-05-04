@@ -22,7 +22,7 @@ app.set("view engine", "pug");
 app.use("/public", express.static("public"));
 app.use("/", routes);
 
-const questions = ["Test1", "Test2", "Test3", "Test4", "Test5"];
+const questions = ["Who coded you?", "How tall are you?", "What's your name?", "How old are you?", "What's your hobby?"];
 
 //When user connects
 io.on("connection", (socket) => {
