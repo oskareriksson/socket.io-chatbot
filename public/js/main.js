@@ -23,9 +23,9 @@ input.addEventListener("keypress", (e) => {
 });
 
 socket.on("greeting", (data) => {
-  let p = document.createElement("p");
-  p.innerHTML = data;
-  chatbox.appendChild(p);
+  let h3 = document.createElement("h3");
+  h3.innerHTML = data;
+  chatbox.appendChild(h3);
 });
 
 socket.on("message", (data) => {
