@@ -42,17 +42,22 @@ input.addEventListener("keypress", (e) => {
       socket.emit("q5");
       break;
     default:
-      console.log("Default triggered");
+      socket.emit("default");
     }
     input.value = "";
   }
 });
 
-
 socket.on("greeting", (data) => {
   let h3 = document.createElement("h3");
   h3.innerHTML = data;
   chatbox.appendChild(h3);
+});
+
+socket.on("chat", (data) => {
+  let p = document.createElement("p");
+  p.innerHTML = `${data.username} : ${data.value}`;
+  chatbox.appendChild(p);
 });
 
 //Handler for adding questions from "!help" command and questions array to chatbox
@@ -64,14 +69,38 @@ socket.on("help", (questions) => {
   });
 });
 
-socket.on("message", (data) => {
-  let p = document.createElement("p");
-  p.innerHTML = `${data.username} : ${data.value}`;
-  chatbox.appendChild(p);
+socket.on("q1", (answer) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
 });
 
-/*socket.on("message", (message) => {
-  console.log(message);
+socket.on("q2", (answer) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
 });
 
-socket.emit("clientmessage", "Hello from client!");*/
+socket.on("q3", (answer) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
+});
+
+socket.on("q4", (answer) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
+});
+
+socket.on("q5", (answer) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
+});
+
+socket.on("default", (data) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = data;
+  chatbox.appendChild(h3);
+});

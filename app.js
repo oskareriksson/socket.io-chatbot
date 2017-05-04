@@ -23,18 +23,42 @@ app.use("/public", express.static("public"));
 app.use("/", routes);
 
 const questions = ["Who coded you?", "How tall are you?", "What's your name?", "How old are you?", "What's your hobby?"];
-const answers = ["Oskar Eriksson!", "I don't know, I'm just a bot.", "ENIAC McBot Junior", "Not sure, depends on when my author launches me..", "Answering you questions is basically all I do!"];
+const answers = ["Oskar Eriksson!", "I don't know, I'm just a bot.", "ENIAC McBot Junior", "Not sure, depends on when my author launches me..", "Answering your questions is basically all I do!"];
 
 //When user connects
 io.on("connection", (socket) => {
   socket.emit("greeting", "Hi! Welcome to the server. Im a bot, here to help you. Ask me a question, or type '!help' to find out what questions I can answer.");
 
   socket.on("chat", (data) => {
-    io.emit("message", data);
+    io.emit("chat", data);
   });
 
   socket.on("help", () => {
     socket.emit("help", questions);
+  });
+
+  socket.on("q1", () => {
+    socket.emit("q1", answers[0]);
+  });
+
+  socket.on("q2", () => {
+    socket.emit("q2", answers[1]);
+  });
+
+  socket.on("q3", () => {
+    socket.emit("q3", answers[2]);
+  });
+
+  socket.on("q4", () => {
+    socket.emit("q4", answers[3]);
+  });
+
+  socket.on("q5", () => {
+    socket.emit("q5", answers[4]);
+  });
+
+  socket.on("default", () => {
+    socket.emit("default", "Sorry, I don't recognize that command.. Try typing it again or type '!help' to see what I can answer!");
   });
 });
 
