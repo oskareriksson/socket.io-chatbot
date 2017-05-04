@@ -7,6 +7,12 @@ let username = "";
 
 input.style.display = "none";
 
+function botResponse(answer) {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = answer;
+  chatbox.appendChild(h3);
+}
+
 //Eventlistener for username input
 name.addEventListener("keypress", function(e) {
   if(e.which == 13 || e.keyCode == 13) {
@@ -49,9 +55,7 @@ input.addEventListener("keypress", (e) => {
 });
 
 socket.on("greeting", (data) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = data;
-  chatbox.appendChild(h3);
+  botResponse(data);
 });
 
 socket.on("chat", (data) => {
@@ -63,44 +67,30 @@ socket.on("chat", (data) => {
 //Handler for adding questions from "!help" command and questions array to chatbox
 socket.on("help", (questions) => {
   questions.forEach((element) => {
-    let h3 = document.createElement("h3");
-    h3.innerHTML = element;
-    chatbox.appendChild(h3);
+    botResponse(element);
   });
 });
 
 socket.on("q1", (answer) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = answer;
-  chatbox.appendChild(h3);
+  botResponse(answer);
 });
 
 socket.on("q2", (answer) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = answer;
-  chatbox.appendChild(h3);
+  botResponse(answer);
 });
 
 socket.on("q3", (answer) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = answer;
-  chatbox.appendChild(h3);
+  botResponse(answer);
 });
 
 socket.on("q4", (answer) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = answer;
-  chatbox.appendChild(h3);
+  botResponse(answer);
 });
 
 socket.on("q5", (answer) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = answer;
-  chatbox.appendChild(h3);
+  botResponse(answer);
 });
 
 socket.on("default", (data) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = data;
-  chatbox.appendChild(h3);
+  botResponse(data);
 });
