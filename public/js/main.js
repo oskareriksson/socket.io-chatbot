@@ -16,18 +16,15 @@ name.addEventListener("keypress", function(e) {
   }
 });
 
-//Eventlistener for chat function
+//Eventlistener for input element
 input.addEventListener("keypress", (e) => {
   if(e.which == 13 || e.keyCode == 13) {
     socket.emit("chat", { username: username, value: input.value});
-    input.value = "";
-  }
-});
+    var test = input.value.toLowerCase();
 
-//Eventlistener for input value "!help"
-input.addEventListener("keypress", (e) => {
-  if(e.which == 13 || e.keyCode == 13 && input.value == "!help") {
-    socket.emit("help");
+    if(input.value === "!help"){
+      socket.emit("help");
+    }
     input.value = "";
   }
 });
