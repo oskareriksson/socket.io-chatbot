@@ -22,9 +22,15 @@ app.set("view engine", "pug");
 app.use("/public", express.static("public"));
 app.use("/", routes);
 
+const questions = ["Test1", "Test2", "Test3", "Test4", "Test5"];
+
 //When user connects
 io.on("connection", (socket) => {
   socket.emit("greeting", "Hi! Welcome to the server. Im a bot, here to help you. Ask me a question, or type '!help' to find out what questions I can answer.");
+
+  socket.on("help", () => {
+    socket.emit("help", questions);
+  });
 
   socket.on("chat", (data) => {
     io.emit("message", data);

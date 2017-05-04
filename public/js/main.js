@@ -7,6 +7,7 @@ let username = "";
 
 input.style.display = "none";
 
+//Eventlistener for username input
 name.addEventListener("keypress", function(e) {
   if(e.which == 13 || e.keyCode == 13) {
     username = this.value;
@@ -15,11 +16,29 @@ name.addEventListener("keypress", function(e) {
   }
 });
 
+//Eventlistener for chat function
 input.addEventListener("keypress", (e) => {
   if(e.which == 13 || e.keyCode == 13) {
     socket.emit("chat", { username: username, value: input.value});
     input.value = "";
   }
+});
+
+//Eventlistener for input value "!help"
+input.addEventListener("keypress", (e) => {
+  if(e.which == 13 || e.keyCode == 13 && input.value == "!help") {
+    socket.emit("help");
+    input.value = "";
+  }
+});
+
+//Handler for adding questions from "!help" command and questions array to chatbox
+socket.on("help", (questions) => {
+  questions.forEach((element) => {
+    let h3 = document.createElement("h3");
+    h3.innerHTML = element;
+    chatbox.appendChild(h3);
+  });
 });
 
 socket.on("greeting", (data) => {
