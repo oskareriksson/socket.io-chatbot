@@ -5,6 +5,16 @@ let input = document.getElementById("input");
 let chatbox = document.getElementById("chatbox");
 let username = "";
 
+input.style.display = "none";
+
+name.addEventListener("keypress", function(e) {
+  if(e.which == 13 || e.keyCode == 13) {
+    username = this.value;
+    this.parentElement.removeChild(this);
+    input.style.display = "block";
+  }
+});
+
 input.addEventListener("keypress", (e) => {
   if(e.which == 13 || e.keyCode == 13) {
     socket.emit("chat", { username: username, value: input.value});
@@ -12,11 +22,10 @@ input.addEventListener("keypress", (e) => {
   }
 });
 
-name.addEventListener("keypress", function(e) {
-  if(e.which == 13 || e.keyCode == 13) {
-    username = this.value;
-    this.parentElement.removeChild(this);
-  }
+socket.on("greeting", (data) => {
+  let p = document.createElement("p");
+  p.innerHTML = data;
+  chatbox.appendChild(p);
 });
 
 socket.on("message", (data) => {

@@ -24,6 +24,8 @@ app.use("/", routes);
 
 //When user connects
 io.on("connection", (socket) => {
+  socket.emit("greeting", "Hi! Welcome to the server.");
+
   socket.on("chat", (data) => {
     io.emit("message", data);
   });
