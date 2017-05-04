@@ -20,13 +20,39 @@ name.addEventListener("keypress", function(e) {
 input.addEventListener("keypress", (e) => {
   if(e.which == 13 || e.keyCode == 13) {
     socket.emit("chat", { username: username, value: input.value});
-    var test = input.value.toLowerCase();
+    var command = input.value.toLowerCase();
 
-    if(input.value === "!help"){
+    switch(command) {
+    case "!help":
       socket.emit("help");
+      break;
+    case "who coded you?":
+      socket.emit("q1");
+      break;
+    case "how tall are you?":
+      socket.emit("q2");
+      break;
+    case "what's your name?":
+      socket.emit("q3");
+      break;
+    case "how old are you?":
+      socket.emit("q4");
+      break;
+    case "what's your hobby?":
+      socket.emit("q5");
+      break;
+    default:
+      console.log("Default triggered");
     }
     input.value = "";
   }
+});
+
+
+socket.on("greeting", (data) => {
+  let h3 = document.createElement("h3");
+  h3.innerHTML = data;
+  chatbox.appendChild(h3);
 });
 
 //Handler for adding questions from "!help" command and questions array to chatbox
@@ -36,12 +62,6 @@ socket.on("help", (questions) => {
     h3.innerHTML = element;
     chatbox.appendChild(h3);
   });
-});
-
-socket.on("greeting", (data) => {
-  let h3 = document.createElement("h3");
-  h3.innerHTML = data;
-  chatbox.appendChild(h3);
 });
 
 socket.on("message", (data) => {
