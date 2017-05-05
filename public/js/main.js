@@ -13,6 +13,12 @@ function botResponse(answer) {
   chatbox.appendChild(h3);
 }
 
+function chat(data) {
+  let p = document.createElement("p");
+  p.innerHTML = `${data.username} : ${data.value}`;
+  chatbox.appendChild(p);
+}
+
 //Eventlistener for username input
 name.addEventListener("keypress", function(e) {
   if(e.which == 13 || e.keyCode == 13) {
@@ -59,9 +65,7 @@ socket.on("greeting", (data) => {
 });
 
 socket.on("chat", (data) => {
-  let p = document.createElement("p");
-  p.innerHTML = `${data.username} : ${data.value}`;
-  chatbox.appendChild(p);
+  chat(data);
 });
 
 //Handler for adding questions from "!help" command and questions array to chatbox
