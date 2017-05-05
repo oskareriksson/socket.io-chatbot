@@ -1,11 +1,16 @@
 body {
   background-color: #91e27f;
+  color: white;
 }
 
 #chatbox {
-  height: 200px;
+  height: 70%;
+  margin-top: 20px;
   background-color: orange;
+  border: 1px solid orange;
+  border-radius: 10px;
   margin-bottom: 20px;
+  padding: 2% 10%;
   overflow: auto;
 }
 
