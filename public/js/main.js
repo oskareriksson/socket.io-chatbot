@@ -44,7 +44,7 @@ input.addEventListener("keypress", (e) => {
     case "how old are you?":
       socket.emit("q4");
       break;
-    case "what's your hobby?":
+    case "do you have any hobbies?":
       socket.emit("q5");
       break;
     default:

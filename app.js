@@ -22,7 +22,7 @@ app.set("view engine", "pug");
 app.use("/public", express.static("public"));
 app.use("/", routes);
 
-const questions = ["Who coded you?", "How tall are you?", "What's your name?", "How old are you?", "What's your hobby?"];
+const questions = ["Who coded you?", "How tall are you?", "What's your name?", "How old are you?", "Do you have any hobbies?"];
 const answers = ["Oskar Eriksson!", "I don't know, I'm just a bot.", "ENIAC McBot Junior", "Not sure, depends on when my author launches me..", "Answering your questions is basically all I do!"];
 
 //When user connects
